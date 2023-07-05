@@ -19,6 +19,7 @@ import 'package:flutter_tools/src/template.dart';
 
 const List<String> _kAvailablePlatforms = <String>[
   'elinux',
+  'tvos',
   'ios',
   'android',
   'windows',
