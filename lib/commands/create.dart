@@ -27,8 +27,8 @@ const List<String> _kAvailablePlatforms = <String>[
   'web',
 ];
 
-class ELinuxCreateCommand extends CreateCommand {
-  ELinuxCreateCommand({super.verboseHelp});
+class TvOSCreateCommand extends CreateCommand {
+  TvOSCreateCommand({super.verboseHelp});
 
   @override
   void addPlatformsOptions({String? customHelp}) {
@@ -141,22 +141,22 @@ class ELinuxCreateCommand extends CreateCommand {
       return super.runCommand();
     }
     final List<String> platforms = stringsArg('platforms');
-    bool shouldRenderELinuxTemplate = platforms.contains('elinux');
+    bool shouldRenderTvOSTemplate = platforms.contains('tvos');
     if (_shouldGeneratePlugin && !argResults!.wasParsed('platforms')) {
-      shouldRenderELinuxTemplate = false;
+      shouldRenderTvOSTemplate = false;
     }
-    if (!shouldRenderELinuxTemplate) {
+    if (!shouldRenderTvOSTemplate) {
       return super.runCommand();
     }
 
     // The template directory that the flutter tools search for available
     // templates cannot be overriden because the implementation is private.
-    // So we have to copy eLinux templates into the directory manually.
-    final Directory eLinuxTemplates = globals.fs
+    // So we have to copy tvOS templates into the directory manually.
+    final Directory tvOSTemplates = globals.fs
         .directory(Cache.flutterRoot)
         .parent
         .childDirectory('templates');
-    if (!eLinuxTemplates.existsSync()) {
+    if (!tvOSTemplates.existsSync()) {
       throwToolExit('Could not locate tvos templates.');
     }
     final Directory templates = globals.fs
@@ -168,7 +168,7 @@ class ELinuxCreateCommand extends CreateCommand {
 
     try {
       for (final Directory projectType
-          in eLinuxTemplates.listSync().whereType<Directory>()) {
+          in tvOSTemplates.listSync().whereType<Directory>()) {
         final Directory dest = templates
             .childDirectory(projectType.basename)
             .childDirectory('tvos.tmpl');

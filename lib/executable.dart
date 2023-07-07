@@ -113,7 +113,7 @@ Future<void> main(List<String> args) async {
       ),
       ELinuxBuildCommand(verboseHelp: verboseHelp),
       ELinuxCleanCommand(verbose: verbose),
-      ELinuxCreateCommand(verboseHelp: verboseHelp),
+      TvOSCreateCommand(verboseHelp: verboseHelp),
       ELinuxDriveCommand(verboseHelp: verboseHelp),
       ELinuxPackagesCommand(),
       ELinuxPrecacheCommand(
