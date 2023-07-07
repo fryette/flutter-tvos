@@ -158,7 +158,7 @@ class ELinuxCreateCommand extends CreateCommand {
         .parent
         .childDirectory('templates');
     if (!eLinuxTemplates.existsSync()) {
-      throwToolExit('Could not locate eLinux templates.');
+      throwToolExit('Could not locate tvos templates.');
     }
     final Directory templates = globals.fs
         .directory(Cache.flutterRoot)
@@ -172,7 +172,7 @@ class ELinuxCreateCommand extends CreateCommand {
           in eLinuxTemplates.listSync().whereType<Directory>()) {
         final Directory dest = templates
             .childDirectory(projectType.basename)
-            .childDirectory('elinux.tmpl');
+            .childDirectory('tvos.tmpl');
         if (dest.existsSync()) {
           dest.deleteSync(recursive: true);
         }
