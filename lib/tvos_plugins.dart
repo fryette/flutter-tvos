@@ -8,8 +8,9 @@ import 'package:flutter_tools/src/platform_plugins.dart';
 
 import 'package:yaml/yaml.dart';
 
-class TVOSPlugin extends PluginPlatform implements NativeOrDartPlugin, DarwinPlugin {
-  const TVOSPlugin({
+class TvOSPlugin extends PluginPlatform
+    implements NativeOrDartPlugin, DarwinPlugin {
+  const TvOSPlugin({
     required this.name,
     required this.classPrefix,
     this.pluginClass,
@@ -17,12 +18,13 @@ class TVOSPlugin extends PluginPlatform implements NativeOrDartPlugin, DarwinPlu
     bool? ffiPlugin,
     this.defaultPackage,
     bool? sharedDarwinSource,
-  }) : ffiPlugin = ffiPlugin ?? false,
-       sharedDarwinSource = sharedDarwinSource ?? false;
+  })  : ffiPlugin = ffiPlugin ?? false,
+        sharedDarwinSource = sharedDarwinSource ?? false;
 
-  factory TVOSPlugin.fromYaml(String name, YamlMap yaml) {
-    assert(validate(yaml)); // TODO(zanderso): https://github.com/flutter/flutter/issues/67241
-    return TVOSPlugin(
+  factory TvOSPlugin.fromYaml(String name, YamlMap yaml) {
+    assert(validate(
+        yaml)); // TODO(zanderso): https://github.com/flutter/flutter/issues/67241
+    return TvOSPlugin(
       name: name,
       classPrefix: '',
       pluginClass: yaml[kPluginClass] as String?,
@@ -73,10 +75,10 @@ class TVOSPlugin extends PluginPlatform implements NativeOrDartPlugin, DarwinPlu
       'name': name,
       'prefix': classPrefix,
       if (pluginClass != null) 'class': pluginClass,
-      if (dartPluginClass != null) kDartPluginClass : dartPluginClass,
+      if (dartPluginClass != null) kDartPluginClass: dartPluginClass,
       if (ffiPlugin) kFfiPlugin: true,
       if (sharedDarwinSource) kSharedDarwinSource: true,
-      if (defaultPackage != null) kDefaultPackage : defaultPackage,
+      if (defaultPackage != null) kDefaultPackage: defaultPackage,
     };
   }
 }

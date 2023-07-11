@@ -45,7 +45,7 @@ import 'commands/test.dart';
 import 'commands/upgrade.dart';
 import 'elinux_artifacts.dart';
 import 'elinux_cache.dart';
-import 'elinux_device_discovery.dart';
+import 'tvos_device_discovery.dart';
 import 'elinux_doctor.dart';
 import 'elinux_package.dart';
 
@@ -72,7 +72,7 @@ Future<void> main(List<String> args) async {
   args = <String>[
     '--suppress-analytics', // Suppress flutter analytics by default.
     '--no-version-check',
-    if (!hasSpecifiedDeviceId) ...<String>['--device-id', 'elinux'],
+    if (!hasSpecifiedDeviceId) ...<String>['--device-id', 'Apple TV'],
     ...args,
   ];
 
@@ -131,13 +131,13 @@ Future<void> main(List<String> args) async {
     muteCommandLogging: muteCommandLogging,
     reportCrashes: false,
     overrides: <Type, Generator>{
-      Cache: () => ELinuxFlutterCache(
-            fileSystem: globals.fs,
-            logger: globals.logger,
-            platform: globals.platform,
-            osUtils: globals.os,
-            projectFactory: globals.projectFactory,
-          ),
+      // Cache: () => ELinuxFlutterCache(
+      //       fileSystem: globals.fs,
+      //       logger: globals.logger,
+      //       platform: globals.platform,
+      //       osUtils: globals.os,
+      //       projectFactory: globals.projectFactory,
+      //     ),
       TemplateRenderer: () => const MustacheTemplateRenderer(),
       ApplicationPackageFactory: () => ELinuxApplicationPackageFactory(),
       Artifacts: () => ELinuxArtifacts(
@@ -146,9 +146,9 @@ Future<void> main(List<String> args) async {
             platform: globals.platform,
             operatingSystemUtils: globals.os,
           ),
-      DeviceManager: () => ELinuxDeviceManager(),
+      DeviceManager: () => TvOSDeviceManager(),
       DoctorValidatorsProvider: () => ELinuxDoctorValidatorsProvider(),
-      ELinuxWorkflow: () => ELinuxWorkflow(
+      TvOSWorkflow: () => TvOSWorkflow(
             operatingSystemUtils: globals.os,
           ),
       ELinuxValidator: () => ELinuxValidator(

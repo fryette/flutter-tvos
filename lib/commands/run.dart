@@ -12,7 +12,7 @@ import '../elinux_cache.dart';
 import '../elinux_plugins.dart';
 
 class ELinuxRunCommand extends RunCommand
-    with ELinuxExtension, ELinuxRequiredArtifacts {
+    with ELinuxExtension, TvOSRequiredArtifacts {
   ELinuxRunCommand({super.verboseHelp});
 
   @override
@@ -24,7 +24,7 @@ class ELinuxRunCommand extends RunCommand
           DevelopmentArtifact.linux,
         if (_getCurrentHostPlatformArchName() == 'x64')
           DevelopmentArtifact.androidGenSnapshot,
-        ELinuxDevelopmentArtifact.elinux,
+        TvOSDevelopmentArtifact.tvos,
       };
 
   String _getCurrentHostPlatformArchName() {

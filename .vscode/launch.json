@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "flutter-elinux",
+        "request": "launch",
+        "type": "dart",
+        "cwd": "${workspaceFolder}",
+        "program": "${workspaceFolder}/bin/flutter_elinux.dart",
+        "args": ["run","superapp/lib/main.dart"]
+      }
+    ]
+  }

@@ -10,7 +10,7 @@ import '../elinux_cache.dart';
 import '../elinux_plugins.dart';
 
 class ELinuxDriveCommand extends DriveCommand
-    with ELinuxExtension, ELinuxRequiredArtifacts {
+    with ELinuxExtension, TvOSRequiredArtifacts {
   ELinuxDriveCommand({super.verboseHelp})
       : super(
           fileSystem: globals.fs,

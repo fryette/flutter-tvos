@@ -51,7 +51,7 @@ class ELinuxPrecacheCommand extends PrecacheCommand {
         _cache.setStampFor(elinuxStampName, '');
       }
       await _cache.updateAll(<DevelopmentArtifact>{
-        ELinuxDevelopmentArtifact.elinux,
+        TvOSDevelopmentArtifact.tvos,
       });
     }
 

@@ -15,18 +15,18 @@ import 'package:flutter_tools/src/globals.dart' as globals;
 import 'package:flutter_tools/src/project.dart';
 import 'package:flutter_tools/src/runner/flutter_command.dart';
 
-mixin ELinuxRequiredArtifacts on FlutterCommand {
+mixin TvOSRequiredArtifacts on FlutterCommand {
   @override
   Future<Set<DevelopmentArtifact>> get requiredArtifacts async =>
       <DevelopmentArtifact>{
         ...await super.requiredArtifacts,
-        ELinuxDevelopmentArtifact.elinux,
+        TvOSDevelopmentArtifact.tvos,
       };
 }
 
 /// See: [DevelopmentArtifact] in `cache.dart`
-class ELinuxDevelopmentArtifact implements DevelopmentArtifact {
-  const ELinuxDevelopmentArtifact._(this.name, {this.feature});
+class TvOSDevelopmentArtifact implements DevelopmentArtifact {
+  const TvOSDevelopmentArtifact._(this.name, {this.feature});
 
   @override
   final String name;
@@ -34,8 +34,7 @@ class ELinuxDevelopmentArtifact implements DevelopmentArtifact {
   @override
   final Feature? feature;
 
-  static const DevelopmentArtifact elinux =
-      ELinuxDevelopmentArtifact._('elinux');
+  static const DevelopmentArtifact tvos = TvOSDevelopmentArtifact._('tvos');
 }
 
 /// Extends [FlutterCache] to register [ELinuxEngineArtifacts].
@@ -66,7 +65,7 @@ class ELinuxEngineArtifacts extends EngineCachedArtifact {
         super(
           'elinux-sdk',
           cache,
-          ELinuxDevelopmentArtifact.elinux,
+          TvOSDevelopmentArtifact.tvos,
         );
 
   final Platform _platform;

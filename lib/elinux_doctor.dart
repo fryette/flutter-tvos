@@ -14,7 +14,7 @@ import 'package:flutter_tools/src/doctor_validator.dart';
 
 import 'package:process/process.dart';
 
-ELinuxWorkflow? get eLinuxWorkflow => context.get<ELinuxWorkflow>();
+TvOSWorkflow? get eLinuxWorkflow => context.get<TvOSWorkflow>();
 ELinuxValidator? get eLinuxValidator => context.get<ELinuxValidator>();
 
 /// See: [_DefaultDoctorValidatorsProvider] in `doctor.dart`
@@ -211,8 +211,8 @@ class ELinuxValidator extends DoctorValidator {
 /// The eLinux-specific implementation of a [Workflow].
 ///
 /// See: [AndroidWorkflow] in `android_workflow.dart`
-class ELinuxWorkflow extends Workflow {
-  ELinuxWorkflow({
+class TvOSWorkflow extends Workflow {
+  TvOSWorkflow({
     required OperatingSystemUtils operatingSystemUtils,
   }) : _operatingSystemUtils = operatingSystemUtils;
 
@@ -220,8 +220,8 @@ class ELinuxWorkflow extends Workflow {
 
   @override
   bool get appliesToHostPlatform =>
-      (_operatingSystemUtils.hostPlatform == HostPlatform.linux_x64) ||
-      (_operatingSystemUtils.hostPlatform == HostPlatform.linux_arm64);
+      (_operatingSystemUtils.hostPlatform == HostPlatform.darwin_arm64) ||
+      (_operatingSystemUtils.hostPlatform == HostPlatform.darwin_x64);
 
   @override
   bool get canLaunchDevices => true;
@@ -230,5 +230,5 @@ class ELinuxWorkflow extends Workflow {
   bool get canListDevices => true;
 
   @override
-  bool get canListEmulators => false;
+  bool get canListEmulators => true;
 }

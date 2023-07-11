@@ -216,10 +216,10 @@ Future<void> ensureReadyForELinuxTooling(FlutterProject project) async {
       project.isPlugin) {
     return;
   }
-  final ELinuxProject eLinuxProject = ELinuxProject.fromFlutter(project);
-  await eLinuxProject.ensureReadyForPlatformSpecificTooling();
+  final TvOSProject tvOSProject = TvOSProject.fromFlutter(project);
+  await tvOSProject.ensureReadyForPlatformSpecificTooling();
 
-  await injectELinuxPlugins(project);
+  //await injectELinuxPlugins(project);
 }
 
 /// See: [refreshPluginsList] in `flutter_plugins.dart`

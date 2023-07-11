@@ -33,7 +33,7 @@ class ELinuxBuildCommand extends BuildCommand {
 }
 
 class BuildPackageCommand extends BuildSubCommand
-    with ELinuxExtension, ELinuxRequiredArtifacts {
+    with ELinuxExtension, TvOSRequiredArtifacts {
   /// See: [BuildApkCommand] in `build_apk.dart`
   BuildPackageCommand({bool verboseHelp = false})
       : super(
@@ -94,7 +94,7 @@ class BuildPackageCommand extends BuildSubCommand
           DevelopmentArtifact.linux,
         if (_getCurrentHostPlatformArchName() == 'x64')
           DevelopmentArtifact.androidGenSnapshot,
-        ELinuxDevelopmentArtifact.elinux,
+        TvOSDevelopmentArtifact.tvos,
       };
 
   @override

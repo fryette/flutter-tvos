@@ -91,14 +91,6 @@ class ELinuxRemoteDevicesConfig {
     return revived;
   }
 
-  List<ELinuxRemoteDeviceConfig> tryGetDevices() {
-    try {
-      return devices;
-    } on Exception {
-      return <ELinuxRemoteDeviceConfig>[];
-    }
-  }
-
   set devices(List<ELinuxRemoteDeviceConfig> configs) {
     _config.setValue(
         _kCustomDevicesConfigKey,

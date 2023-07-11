@@ -9,7 +9,7 @@ import 'package:flutter_tools/src/globals.dart' as globals;
 import 'package:flutter_tools/src/ios/xcode_build_settings.dart' as xcode;
 import 'package:flutter_tools/src/project.dart';
 
-import 'apple_tv_plugins.dart';
+import 'tvos_plugins.dart';
 import 'elinux_plugins.dart';
 
 /// The eLinux sub project.
@@ -59,14 +59,14 @@ class ELinuxProject extends FlutterProjectPlatform
   }
 }
 
-class AppleTVProject extends XcodeBasedProject {
-  AppleTVProject.fromFlutter(this.parent);
+class TvOSProject extends XcodeBasedProject {
+  TvOSProject.fromFlutter(this.parent);
 
   @override
   final FlutterProject parent;
 
   @override
-  String get pluginConfigKey => TVOSPlugin.kConfigKey;
+  String get pluginConfigKey => TvOSPlugin.kConfigKey;
 
   @override
   bool existsSync() => hostAppRoot.existsSync();
@@ -82,26 +82,33 @@ class AppleTVProject extends XcodeBasedProject {
   /// The subdirectory of [managedDirectory] that contains files that are
   /// generated on the fly. All generated files that are not intended to be
   /// checked in should live here.
-  Directory get ephemeralDirectory => managedDirectory.childDirectory('ephemeral');
+  Directory get ephemeralDirectory =>
+      managedDirectory.childDirectory('ephemeral');
 
   /// The xcfilelist used to track the inputs for the Flutter script phase in
   /// the Xcode build.
-  File get inputFileList => ephemeralDirectory.childFile('FlutterInputs.xcfilelist');
+  File get inputFileList =>
+      ephemeralDirectory.childFile('FlutterInputs.xcfilelist');
 
   /// The xcfilelist used to track the outputs for the Flutter script phase in
   /// the Xcode build.
-  File get outputFileList => ephemeralDirectory.childFile('FlutterOutputs.xcfilelist');
+  File get outputFileList =>
+      ephemeralDirectory.childFile('FlutterOutputs.xcfilelist');
 
   @override
-  File get generatedXcodePropertiesFile => ephemeralDirectory.childFile('Flutter-Generated.xcconfig');
+  File get generatedXcodePropertiesFile =>
+      ephemeralDirectory.childFile('Flutter-Generated.xcconfig');
 
-  File get pluginRegistrantImplementation => managedDirectory.childFile('GeneratedPluginRegistrant.swift');
+  File get pluginRegistrantImplementation =>
+      managedDirectory.childFile('GeneratedPluginRegistrant.swift');
 
   @override
-  File xcodeConfigFor(String mode) => managedDirectory.childFile('Flutter-$mode.xcconfig');
+  File xcodeConfigFor(String mode) =>
+      managedDirectory.childFile('Flutter-$mode.xcconfig');
 
   @override
-  File get generatedEnvironmentVariableExportScript => ephemeralDirectory.childFile('flutter_export_environment.sh');
+  File get generatedEnvironmentVariableExportScript =>
+      ephemeralDirectory.childFile('flutter_export_environment.sh');
 
   /// The file where the Xcode build will write the name of the built app.
   ///
